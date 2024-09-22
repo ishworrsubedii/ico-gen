@@ -5,10 +5,10 @@ ICO-GEN is a powerful tool that helps you generate icons using large language mo
 
 This project leverages modern AI technologies to generate high-quality icons that can be used in web development, mobile apps, or any other digital platform.
 
-![img.png](imgs/img.png)
+![img.png](imgs/ico-ss-1.png)
 
 
-![img.png](img.png)
+![img.png](imgs/ico-ss-2.png)
 ## Tech Stack
 
 ### Frontend:
