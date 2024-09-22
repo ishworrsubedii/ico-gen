@@ -1,4 +1,5 @@
 'use client'
+
 import {useState, useEffect} from 'react'
 import Header from './header'
 import Footer from './footer'
@@ -37,3 +38,4 @@ export function Layout() {
         </div>
     )
 }
+
