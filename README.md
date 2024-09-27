@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# ICO-GEN
 
-First, run the development server:
+ICO-GEN is a powerful tool that helps you generate icons using large language models (LLMs) and stable diffusion. Whether you need custom icons or want to edit existing ones, ICO-GEN makes it easy to create and download icons in multiple formats.
 
+This project leverages modern AI technologies to generate high-quality icons that can be used in web development, mobile apps, or any other digital platform.
+
+![img.png](imgs/ico-ss-1.png)
+
+
+![img.png](imgs/ico-ss-2.png)
+## Tech Stack
+
+### Frontend:
+- **Next.js**
+- **TailwindCSS**
+
+### Backend:
+- **FastAPI**
+- **Python**
+- **Gemini API**
+
+## Features
+
+ICO-GEN comes with the following features to help you create the perfect icons:
+
+- [x] Generate SVG images for icons automatically
+- [x] Edit SVG properties such as shape, color, and size
+- [x] Download generated images in multiple formats (SVG, PNG, JPEG)
+- [ ] Expand customization options (coming soon)
+- [ ] Edit Existing Icons (coming soon)  
+
+## Installation
+
+To get started, you'll need to install both the backend and frontend dependencies. Follow the steps below.
+
+### Backend Installation
+
+1. **Clone the Repository**:  
+   Clone the project to your local machine using the command below:
+   ```bash
+   git clone https://github.com/your-repo/ico-gen.git
+   cd ico-gen/backend
+   ```
+
+2. **Install Dependencies**:  
+   Install the required Python packages by running:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Frontend Installation
+
+1. **Navigate to Frontend Directory**:  
+   Move to the frontend folder by using the following command:
+   ```bash
+   cd ../frontend/iconify
+   ```
+
+2. **Install Dependencies**:  
+   Use npm to install the necessary packages for the frontend:
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+Once you've installed all the dependencies, you can start the project.
+
+### Backend
+
+To run the backend server using FastAPI:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+python main.py
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Frontend
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To start the frontend development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The frontend server will run on `localhost:3000` by default, and the backend API will be available at `localhost:8000`.
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+We are always looking for people to contribute to this project! If you have any improvements or new features you'd like to add, feel free to fork the project and create a pull request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Before contributing, please check out the [CONTRIBUTING.md](CONTRIBUTING.md) to learn about the contribution guidelines.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+This project is licensed under the MIT License.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you have any questions or feedback, feel free to reach out via email or open an issue on GitHub. Contributions and suggestions are always welcome!
