@@ -20,4 +20,3 @@ async def generate_icon(request: ICONIFYModel):
         return api_success_response(icon_data)
     except Exception as e:
         return api_error_response(f"Icon generation failed: {str(e)}")
-
