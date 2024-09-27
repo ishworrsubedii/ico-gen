@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  distDir: 'public',
   // Uncomment and adjust this if your pages are not in the default location
   // dir: 'iconify/components',
    rewrites: async () => {
