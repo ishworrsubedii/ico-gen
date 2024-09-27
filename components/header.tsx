@@ -18,9 +18,9 @@ export default function Header({isDarkMode, toggleTheme}: HeaderProps) {
                 <nav className="flex justify-between items-center">
                     <h1 className="text-2xl font-bold">Ico-Gen</h1>
                     <div className="hidden md:flex space-x-4 items-center">
+                    <Button variant="ghost">About</Button>
+                        <Button variant="ghost">Playground</Button>
                         <Button variant="ghost">Features</Button>
-                        <Button variant="ghost">Pricing</Button>
-                        <Button variant="ghost">About</Button>
                         <Switch
                             checked={isDarkMode}
                             onCheckedChange={toggleTheme}
@@ -40,9 +40,9 @@ export default function Header({isDarkMode, toggleTheme}: HeaderProps) {
                     animate={{opacity: 1, y: 0}}
                 >
                     <div className="container mx-auto px-4 flex flex-col space-y-2">
-                        <Button variant="ghost">Features</Button>
-                        <Button variant="ghost">Pricing</Button>
                         <Button variant="ghost">About</Button>
+                        <Button variant="ghost">Playground</Button>
+                        <Button variant="ghost">Features</Button>
                         <div className="flex items-center justify-between">
                             <span>Theme</span>
                             <Switch
