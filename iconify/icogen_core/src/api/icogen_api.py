@@ -3,7 +3,6 @@ Created By: ishwor subedi
 Date: 2024-09-22
 """
 from fastapi.routing import APIRouter
-from fastapi import HTTPException
 
 from icogen_core.src.models.pydantic_model import ICONIFYModel
 from icogen_core.src.pipeline.pipeline import ICOGen
