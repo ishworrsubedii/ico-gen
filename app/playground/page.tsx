@@ -631,7 +631,7 @@ export default function AdvancedSVGEditor() {
   const fetchSvg = async (promptText: string) => {
     setIsLoading(true)
     try {
-      const response = await axios.post<ApiResponse>('http://0.0.0.0:8000/generate_icon', { prompt: promptText });
+      const response = await axios.post<ApiResponse>('https://ico-gen-main.onrender.com/generate_icon', { prompt: promptText });
       if (response.status === 200 && response.data.status === 'success') {
         setSvgCode(response.data.data);
       } else {
