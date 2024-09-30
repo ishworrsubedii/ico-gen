@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "fastapi-dev": "pip install -r requirements.txt && python3 -m uvicorn main:app --reload --host localhost --port 8000",
     "next-dev": "next dev",
-    "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
-    "build": "next build && npm run fastapi-dev",
+    "dev": "npm run next-dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
