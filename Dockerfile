@@ -6,6 +6,8 @@ WORKDIR /ico-gen
 COPY icogen_core /ico-gen/icogen_core
 COPY main.py /ico-gen
 COPY requirements.txt /ico-gen
+COPY setup.py /ico-gen
+
 
 RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx \
@@ -19,12 +21,10 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --no-cache-dir --upgrade pip==23.0
 RUN pip install --no-cache-dir -r requirements.txt
 
-WORKDIR /ico-gen/icogen_core
-COPY icogen_core/setup.py /ico-gen/icogen_core/setup.py
+
 RUN python setup.py sdist bdist_wheel
 RUN pip install dist/*.whl
 
-WORKDIR /ico-gen
 
 EXPOSE 8000
 
