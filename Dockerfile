@@ -1,6 +1,5 @@
 FROM python:3.10-slim
 
-# Set the working directory
 WORKDIR /ico-gen
 
 COPY icogen_core /ico-gen/icogen_core
