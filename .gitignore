@@ -45,4 +45,8 @@ env/
 .idea
 .vscode
 
+dist
+
+icogen_core.egg-info
+
 
