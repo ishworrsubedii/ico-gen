@@ -1,4 +1,4 @@
-name: Publish MannequinToModel Docker image
+name: Publish ICO-GEN Docker image
 
 on:
   push:
