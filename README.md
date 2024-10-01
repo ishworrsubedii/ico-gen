@@ -18,6 +18,7 @@ This project leverages modern AI technologies to generate high-quality icons tha
 ### Backend:
 - **FastAPI**
 - **Python**
+- **Langchain**
 - **Gemini API**
 
 ## Features
