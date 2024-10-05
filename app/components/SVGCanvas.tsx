@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 
-interface SVGElement {
+export type CanvasSVGElement = {
     id: string;
     type: 'rect' | 'circle' | 'text' | 'path';
     x: number;
@@ -24,9 +24,9 @@ const SVGCanvas: React.FC<{
     onPanChange: (pan: { x: number; y: number }) => void;
     showGrid: boolean;
     svgCode: string;
-    onElementsChange: (elements: SVGElement[]) => void;
+    onElementsChange: (elements: CanvasSVGElement[]) => void;
     eraserSize: number;
-    elements: SVGElement[];
+    elements: CanvasSVGElement[];
 }> = ({
     activeTool,
     fillColor,
@@ -57,7 +57,7 @@ const SVGCanvas: React.FC<{
                 const parser = new DOMParser();
                 const svgDoc = parser.parseFromString(cleanedSvgCode, 'image/svg+xml');
                 const svgElement = svgDoc.documentElement;
-                const newElements: SVGElement[] = [];
+                const newElements: CanvasSVGElement[] = [];
 
                 Array.from(svgElement.children).forEach((child, index) => {
                     if (child instanceof SVGElement) {
@@ -81,7 +81,8 @@ const SVGCanvas: React.FC<{
                     }
                 });
 
-               
+                console.log('SVG Code:', cleanedSvgCode);
+                console.log('Parsed SVG Elements:', newElements);
                 onElementsChange(newElements);
             }
         }, [svgCode, fillColor, strokeColor, strokeWidth, onElementsChange]);
@@ -102,7 +103,7 @@ const SVGCanvas: React.FC<{
         const draw = (event: React.MouseEvent<SVGElement, MouseEvent>) => {
             if (!isDrawing) return
             const currentPoint = getMousePosition(event as unknown as React.MouseEvent<SVGSVGElement, MouseEvent>)
-            let newElement: SVGElement | null = null
+            let newElement: CanvasSVGElement | null = null
 
             switch (activeTool) {
                 case 'Rectangle':
@@ -307,7 +308,7 @@ const SVGCanvas: React.FC<{
             );
         };
 
-        const renderResizeHandles = (element: SVGElement) => {
+        const renderResizeHandles = (element: CanvasSVGElement) => {
             if ((element.type !== 'rect' && element.type !== 'circle') || selectedElementId !== element.id) return null;
 
             const handleSize = 8;
@@ -368,6 +369,7 @@ const SVGCanvas: React.FC<{
               {renderGrid()}
               <g transform={`translate(${400 / zoom}, ${300 / zoom}) scale(${1.4 * zoom})`}> {/* Adjust translation and scale */}
                 {elements.map((element) => {
+                  console.log('Rendering Element:', element);
                   switch (element.type) {
                     case 'rect':
                       return (

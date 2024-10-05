@@ -12,6 +12,8 @@ import SVGCanvas from '../components/SVGCanvas'
 import DownloadMenu from '../components/DownloadMenu'
 import ThemeToggle from '../components/ThemeToggle'
 import GenerateSVG from '../components/GenerateSVG'
+import { CanvasSVGElement } from '../components/SVGCanvas'
+
 
 type ApiResponse = {
   status: string;
@@ -34,6 +36,8 @@ export default function AdvancedSVGEditor() {
   const [eraserSize, setEraserSize] = useState(20)
   const [isLoading, setIsLoading] = useState(false)
   const [prompt, setPrompt] = useState<string>('')
+
+
 
   const handleToolClick = (toolName: string) => {
     setActiveTool(toolName)
@@ -211,9 +215,9 @@ export default function AdvancedSVGEditor() {
                   onPanChange={setPan}
                   showGrid={showGrid}
                   svgCode={svgCode}
-                  onElementsChange={setElements}
+                  onElementsChange={(newElements: CanvasSVGElement[]) => setElements(newElements as unknown as SVGElement[])}
                   eraserSize={eraserSize}
-                  elements={elements}
+                  elements={elements as unknown as CanvasSVGElement[]}
                 />
               </div>
               <div className="mt-4 flex justify-center space-x-4">
