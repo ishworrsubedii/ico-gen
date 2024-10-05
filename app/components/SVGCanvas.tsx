@@ -52,40 +52,39 @@ const SVGCanvas: React.FC<{
 
         useEffect(() => {
             if (svgCode) {
-                const cleanedSvgCode = svgCode
-                    .replace(/```svg|```/g, '') 
-                const parser = new DOMParser();
-                const svgDoc = parser.parseFromString(cleanedSvgCode, 'image/svg+xml');
-                const svgElement = svgDoc.documentElement;
-                const newElements: CanvasSVGElement[] = [];
-
-                Array.from(svgElement.children).forEach((child, index) => {
-                    if (child instanceof SVGElement) {
-                        const elementProps: { [key: string]: string } = {};
-                        Array.from(child.attributes).forEach(attr => {
-                            elementProps[attr.name] = attr.value;
-                        });
-                        newElements.push({
-                            id: `generated-${index}`,
-                            type: child.tagName.toLowerCase() as 'rect' | 'circle' | 'text' | 'path',
-                            x: parseFloat(elementProps.x || elementProps.cx || '0'),
-                            y: parseFloat(elementProps.y || elementProps.cy || '0'),
-                            width: parseFloat(elementProps.width || '0'),
-                            height: parseFloat(elementProps.height || '0'),
-                            radius: parseFloat(elementProps.r || '0'),
-                            fill: elementProps.fill || fillColor,
-                            stroke: elementProps.stroke || strokeColor,
-                            strokeWidth: parseFloat(elementProps['stroke-width'] || strokeWidth.toString()),
-                            text: child.tagName.toLowerCase() === 'path' ? elementProps.d : child.textContent || undefined,
-                        });
-                    }
-                });
-
-                console.log('SVG Code:', cleanedSvgCode);
-                console.log('Parsed SVG Elements:', newElements);
+              const cleanedSvgCode = svgCode.replace(/```svg|```/g, '');
+              const parser = new DOMParser();
+              const svgDoc = parser.parseFromString(cleanedSvgCode, 'image/svg+xml');
+              const svgElement = svgDoc.documentElement;
+              const newElements: CanvasSVGElement[] = [];
+          
+              Array.from(svgElement.children).forEach((child, index) => {
+                if (child instanceof SVGElement) {
+                  const elementProps: { [key: string]: string } = {};
+                  Array.from(child.attributes).forEach(attr => {
+                    elementProps[attr.name] = attr.value;
+                  });
+                  newElements.push({
+                    id: `generated-${index}`,
+                    type: child.tagName.toLowerCase() as 'rect' | 'circle' | 'text' | 'path',
+                    x: parseFloat(elementProps.x || elementProps.cx || '0'),
+                    y: parseFloat(elementProps.y || elementProps.cy || '0'),
+                    width: parseFloat(elementProps.width || '0'),
+                    height: parseFloat(elementProps.height || '0'),
+                    radius: parseFloat(elementProps.r || '0'),
+                    fill: elementProps.fill || fillColor,
+                    stroke: elementProps.stroke || strokeColor,
+                    strokeWidth: parseFloat(elementProps['stroke-width'] || strokeWidth.toString()),
+                    text: child.tagName.toLowerCase() === 'path' ? elementProps.d : child.textContent || undefined,
+                  });
+                }
+              });
+          
+              if (JSON.stringify(newElements) !== JSON.stringify(elements)) {
                 onElementsChange(newElements);
+              }
             }
-        }, [svgCode, fillColor, strokeColor, strokeWidth, onElementsChange]);
+          }, [svgCode, fillColor, strokeColor, strokeWidth, onElementsChange, elements]);
 
         const getMousePosition = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
             const CTM = canvasRef.current!.getScreenCTM()!;
@@ -369,7 +368,6 @@ const SVGCanvas: React.FC<{
               {renderGrid()}
               <g transform={`translate(${400 / zoom}, ${300 / zoom}) scale(${1.4 * zoom})`}> {/* Adjust translation and scale */}
                 {elements.map((element) => {
-                  console.log('Rendering Element:', element);
                   switch (element.type) {
                     case 'rect':
                       return (
